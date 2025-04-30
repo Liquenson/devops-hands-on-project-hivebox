@@ -1,55 +1,57 @@
-[![Dynamic DevOps Roadmap](https://img.shields.io/badge/Dynamic_DevOps_Roadmap-559e11?style=for-the-badge&logo=Vercel&logoColor=white)](https://devopsroadmap.io/getting-started/)
-[![Community](https://img.shields.io/badge/Join_Community-%23FF6719?style=for-the-badge&logo=substack&logoColor=white)](https://newsletter.devopsroadmap.io/subscribe)
-[![Telegram Group](https://img.shields.io/badge/Telegram_Group-%232ca5e0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/DevOpsHive/985)
-[![Fork on GitHub](https://img.shields.io/badge/Fork_On_GitHub-%2336465D?style=for-the-badge&logo=github&logoColor=white)](https://github.com/DevOpsHiveHQ/devops-hands-on-project-hivebox/fork)
+## 🧠 Sobre el Proyecto
 
-# HiveBox - DevOps End-to-End Hands-On Project
+HiveBox es un proyecto end-to-end basado en DevOps que simula un entorno de producción real. Implementa todo el ciclo de vida del desarrollo de software (SDLC), incluyendo infraestructura como código, integración y entrega continua, contenedores, monitoreo, seguridad y más.
 
-<p align="center">
-  <a href="https://devopsroadmap.io/projects/hivebox" style="display: block; padding: .5em 0; text-align: center;">
-    <img alt="HiveBox - DevOps End-to-End Hands-On Project" border="0" width="90%" src="https://devopsroadmap.io/img/projects/hivebox-devops-end-to-end-project.png" />
-  </a>
-</p>
+Este repositorio contiene **mi implementación personalizada** del proyecto, siguiendo las buenas prácticas y herramientas del ecosistema DevOps moderno.
+## 🎯 Objetivos
 
-> [!CAUTION]
-> **[Fork](https://github.com/DevOpsHiveHQ/devops-hands-on-project-hivebox/fork)** this repo, and create PRs in your fork, **NOT** in this repo!
+- Simular un flujo DevOps completo, desde el desarrollo hasta producción.
+- Automatizar infraestructura en AWS usando Terraform y Ansible.
+- Contenerizar y desplegar servicios con Docker y Kubernetes.
+- Implementar CI/CD con GitHub Actions.
+- Habilitar observabilidad con Prometheus y Grafana.
+- Asegurar y auditar el entorno con herramientas de seguridad.
+- 
+## 📁 Estructura del Repositorio
 
-> [!TIP]
-> If you are looking for the full roadmap, including this project, go back to the [getting started](https://devopsroadmap.io/getting-started) page.
+. ├── app/ # Código fuente de la app ├── docker/ # Dockerfiles, docker-compose ├── k8s/ # Manifests de Kubernetes y Helm Charts ├── terraform/ # Infraestructura como código en AWS ├── ansible/ # Roles y playbooks de Ansible ├── .github/workflows/ # Workflows CI/CD (GitHub Actions) ├── monitoring/ # Dashboards y config de Prometheus/Grafana ├── docs/ # Documentación del proyecto └── README.md
 
-This repository is the starting point for [HiveBox](https://devopsroadmap.io/projects/hivebox/), the end-to-end hands-on project.
+## 🚀 Cómo Ejecutar Localmente
 
-You can fork this repository and start implementing the [HiveBox](https://devopsroadmap.io/projects/hivebox/) project. HiveBox project follows the same Dynamic MVP-style mindset used in the [roadmap](https://devopsroadmap.io/).
+1. Clona este repositorio:
 
-The project aims to cover the whole Software Development Life Cycle (SDLC). That means each phase will cover all aspects of DevOps, such as planning, coding, containers, testing, continuous integration, continuous delivery, infrastructure, etc.
+```bash
+git clone https://github.com/tuusuario/devops-hands-on-project-hivebox.git
+cd devops-hands-on-project-hivebox
 
-Happy DevOpsing ♾️
+docker-compose up -d --build
 
-## Before you start
-
-Here is a pre-start checklist:
-
-- ⭐ <a target="_blank" href="https://github.com/DevOpsHiveHQ/dynamic-devops-roadmap">Star the **roadmap** repo</a> on GitHub for better visibility.
-- ✉️ <a target="_blank" href="https://newsletter.devopsroadmap.io/subscribe">Join the community</a> for the project community activities, which include mentorship, job posting, online meetings, workshops, career tips and tricks, and more.
-- 🌐 <a target="_blank" href="https://t.me/DevOpsHive/985">Join the Telegram group</a> for interactive communication.
-
-## Preparation
-
-- [Create GitHub account](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github) (if you don't have one), then [fork this repository](https://github.com/DevOpsHiveHQ/devops-hands-on-project-hivebox/fork) and start from there.
-- [Create GitHub project board](https://docs.github.com/en/issues/planning-and-tracking-with-projects/creating-projects/creating-a-project) for this repository (use `Kanban` template).
-- Each phase should be presented as a pull request against the `main` branch. Don’t push directly to the main branch!
-- Document as you go. Always assume that someone else will read your project at any phase.
-- You can get senseBox IDs by checking the [openSenseMap](https://opensensemap.org/) website. Use 3 senseBox IDs close to each other (you can use the following [5eba5fbad46fb8001b799786](https://opensensemap.org/explore/5eba5fbad46fb8001b799786), [5c21ff8f919bf8001adf2488](https://opensensemap.org/explore/5c21ff8f919bf8001adf2488), and [5ade1acf223bd80019a1011c](https://opensensemap.org/explore/5ade1acf223bd80019a1011c)). Just copy the IDs, you will need them in the next steps.
-
-<br/>
-<p align="center">
-  <a href="https://devopsroadmap.io/projects/hivebox/" imageanchor="1">
-    <img src="https://img.shields.io/badge/Get_Started_Now-559e11?style=for-the-badge&logo=Vercel&logoColor=white" />
-  </a><br/>
-</p>
 
 ---
 
-## Implementation
+### 5. 📦 **Tecnologías Usadas**
+```markdown
+## ⚙️ Stack Tecnológico
 
-** ADD YOUR IMPLEMENTATION DOCUMENTATION HERE **
+- Terraform + Ansible (IaC)
+- AWS (EC2, S3, VPC, etc.)
+- Docker + Docker Compose
+- Kubernetes (local y/o EKS)
+- GitHub Actions (CI/CD)
+- Prometheus + Grafana (Monitoreo)
+- Python/Node.js (App base)
+- openSenseMap API (datos IoT)
+
+## 🧭 Arquitectura
+
+![Arquitectura HiveBox](./docs/arquitectura-hivebox.png)
+
+## 📅 Estado del Proyecto
+
+- [x] Fase 0 - Planificación
+- [x] Fase 1 - Dev environment (Docker + app base)
+- [ ] Fase 2 - Testing
+- [ ] Fase 3 - CI/CD
+- [ ] Fase 4 - Terraform infra AWS
+- [ ] ...
+
