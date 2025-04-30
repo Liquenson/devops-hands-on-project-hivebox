@@ -55,3 +55,4 @@ docker-compose up -d --build
 - [ ] Fase 4 - Terraform infra AWS
 - [ ] ...
 
+@tbcstudio
