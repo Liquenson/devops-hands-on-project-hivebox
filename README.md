@@ -1,8 +1,8 @@
 # 🐝 HiveBox - Proyecto DevOps End-to-End
 
-HiveBox es un proyecto de simulación DevOps end-to-end que emula un entorno de producción moderno. Implementa todo el ciclo de vida del desarrollo de software (SDLC), desde la creación de infraestructura hasta el monitoreo y la seguridad, utilizando herramientas y buenas prácticas actuales.
+**HiveBox** es una simulación de un entorno DevOps moderno, diseñada para representar un flujo completo del ciclo de vida del desarrollo de software (SDLC). Desde la provisión de infraestructura en AWS hasta el monitoreo y la seguridad, este proyecto incorpora herramientas líderes del ecosistema DevOps para ofrecer una solución práctica, escalable y automatizada.
 
-Este repositorio contiene **mi implementación personalizada**, optimizada para AWS y alineada con los estándares del ecosistema DevOps moderno.
+> 🔧 Optimizado para AWS y alineado con estándares profesionales de la industria DevOps.
 
 ---
 
@@ -17,54 +17,71 @@ Este repositorio contiene **mi implementación personalizada**, optimizada para 
   - [🚀 Cómo Ejecutar Localmente](#-cómo-ejecutar-localmente)
     - [✅ Prerrequisitos](#-prerrequisitos)
     - [🔧 Pasos](#-pasos)
-- [Clona el repositorio](#clona-el-repositorio)
-- [(Opcional) Crea y configura un archivo .env si se requiere](#opcional-crea-y-configura-un-archivo-env-si-se-requiere)
-- [Construye y levanta los contenedores](#construye-y-levanta-los-contenedores)
-- [Verifica que los servicios estén activos](#verifica-que-los-servicios-estén-activos)
+- [1. Clona el repositorio](#1-clona-el-repositorio)
+- [2. (Opcional) Crea un archivo .env si se requiere](#2-opcional-crea-un-archivo-env-si-se-requiere)
+- [3. Construye y levanta los contenedores](#3-construye-y-levanta-los-contenedores)
+- [4. Verifica que los servicios estén activos](#4-verifica-que-los-servicios-estén-activos)
+- [Ver logs de los servicios](#ver-logs-de-los-servicios)
+- [Apagar y eliminar contenedores](#apagar-y-eliminar-contenedores)
+- [1. Haz un fork del repositorio](#1-haz-un-fork-del-repositorio)
+- [2. Crea una nueva rama](#2-crea-una-nueva-rama)
+- [3. Haz tus cambios y confirma](#3-haz-tus-cambios-y-confirma)
+- [4. Sube tu rama y abre un Pull Request](#4-sube-tu-rama-y-abre-un-pull-request)
 
 ---
 
 ## 🎯 Objetivos
 
 - Simular un flujo DevOps completo, desde desarrollo hasta producción.
-- Automatizar infraestructura en AWS con Terraform y Ansible.
-- Contenerizar servicios con Docker y desplegarlos en Kubernetes.
-- Implementar pipelines CI/CD utilizando GitHub Actions.
-- Aplicar monitoreo y observabilidad con Prometheus y Grafana.
-- Integrar prácticas de seguridad y auditoría en el entorno DevOps.
+- Automatizar infraestructura en AWS con **Terraform** y **Ansible**.
+- Contenerizar servicios con **Docker** y desplegarlos en **Kubernetes (EKS)**.
+- Implementar pipelines CI/CD usando **GitHub Actions**.
+- Integrar monitoreo y observabilidad con **Prometheus** y **Grafana**.
+- Aplicar prácticas de seguridad y auditoría dentro del ciclo DevOps.
 
 ---
 
 ## ⚙️ Stack Tecnológico
 
-- **Infraestructura como Código:** Terraform + Ansible  
-- **Cloud Provider:** AWS (EC2, S3, VPC, IAM, etc.)  
-- **Contenedores:** Docker + Docker Compose  
-- **Orquestación:** Kubernetes (local y/o EKS)  
-- **CI/CD:** GitHub Actions  
-- **Monitoreo:** Prometheus + Grafana  
-- **Lenguajes base:** Python / Node.js  
-- **API de datos:** openSenseMap (IoT)  
+| Categoría                    | Herramientas                            |
+|-----------------------------|-----------------------------------------|
+| Infraestructura como Código | Terraform, Ansible                      |
+| Cloud Provider              | AWS (EC2, S3, VPC, IAM, etc.)           |
+| Contenedores                | Docker, Docker Compose                  |
+| Orquestación                | Kubernetes (local y/o EKS)              |
+| CI/CD                       | GitHub Actions                          |
+| Monitoreo                   | Prometheus, Grafana                     |
+| Lenguajes Base              | Python / Node.js                        |
+| API de Datos                | [openSenseMap](https://opensensemap.org/)|
 
 ---
 
 ## 🧭 Arquitectura
 
-![Arquitectura HiveBox](./docs/arquitectura-hivebox.png)
+> ✏️ _Diagrama en desarrollo..._
+
+La arquitectura de HiveBox está diseñada para simular un entorno de producción moderno. Incluye:
+- Infraestructura provisionada en AWS.
+- Contenedores desplegados en un clúster Kubernetes (local o en EKS).
+- Pipelines de integración y despliegue continuo (CI/CD).
+- Sistema de monitoreo y observabilidad.
+- Seguridad integrada desde el inicio (DevSecOps).
+
+📌 Solicita el diagrama visual si deseas incluirlo aquí.
 
 ---
 
 ## 📁 Estructura del Repositorio
 
 .
-├── app/ # Código fuente de la aplicación base (Node.js o Python)
-├── docker/ # Dockerfiles y configuración Docker Compose
+├── app/ # Código fuente (Node.js o Python)
+├── docker/ # Dockerfiles y Docker Compose
 ├── k8s/ # Manifests de Kubernetes y Helm Charts
-├── terraform/ # Definición de infraestructura en AWS
-├── ansible/ # Playbooks y roles de Ansible
-├── .github/workflows/ # Workflows de CI/CD con GitHub Actions
-├── monitoring/ # Dashboards y configuración Prometheus/Grafana
-├── docs/ # Documentación técnica y visual
+├── terraform/ # Infraestructura en AWS (Terraform)
+├── ansible/ # Playbooks y roles (Ansible)
+├── .github/workflows/ # Pipelines CI/CD (GitHub Actions)
+├── monitoring/ # Configuración de Prometheus y Grafana
+├── docs/ # Documentación y recursos visuales
 └── README.md # Este archivo
 
 
@@ -73,60 +90,90 @@ Este repositorio contiene **mi implementación personalizada**, optimizada para 
 ## 🚀 Cómo Ejecutar Localmente
 
 ### ✅ Prerrequisitos
-
-- [Docker](https://www.docker.com/)
-- [Docker Compose](https://docs.docker.com/compose/)
-- [Git](https://git-scm.com/)
+- Docker
+- Docker Compose
+- Git
 
 ### 🔧 Pasos
 
 ```bash
-# Clona el repositorio
+# 1. Clona el repositorio
 git clone https://github.com/tuusuario/devops-hands-on-project-hivebox.git
 cd devops-hands-on-project-hivebox
 
-# (Opcional) Crea y configura un archivo .env si se requiere
+# 2. (Opcional) Crea un archivo .env si se requiere
 cp .env.example .env
 
-# Construye y levanta los contenedores
+# 3. Construye y levanta los contenedores
 docker-compose up -d --build
 
-# Verifica que los servicios estén activos
+# 4. Verifica que los servicios estén activos
 docker ps
 
-Accede a la aplicación en: http://localhost:3000
-(El puerto puede variar según la app base)
+➡️ Accede a la aplicación en: http://localhost:3000
+(El puerto puede variar según la configuración)
 
-| Fase                           | Estado        |
-| ------------------------------ | ------------- |
-| Fase 0 - Planificación         | ✅ Completado  |
-| Fase 1 - Entorno Dev           | ✅ Completado  |
-| Fase 2 - Testing               | ⏳ En progreso |
-| Fase 3 - CI/CD                 | ⏳ Pendiente   |
-| Fase 4 - Terraform (AWS)       | ⏳ Pendiente   |
-| Fase 5 - Kubernetes (EKS)      | ⏳ Pendiente   |
-| Fase 6 - Monitoreo             | ⏳ Pendiente   |
-| Fase 7 - Seguridad & Auditoría | ⏳ Pendiente   |
+🛠️ Comandos adicionales
 
-🛠️ Contribuciones
-¡Contribuciones son bienvenidas! Para colaborar:
+# Ver logs de los servicios
+docker-compose logs -f
 
-Haz un fork del repositorio
+# Apagar y eliminar contenedores
+docker-compose down
 
-Crea una nueva rama:
+| Fase                           | Estado         |
+| ------------------------------ | -------------- |
+| Fase 0 - Planificación         | ✅ Completado   |
+| Fase 1 - Entorno Dev           | ✅ Completado   |
+| Fase 2 - Testing               | 🟡 En progreso |
+| Fase 3 - CI/CD                 | ⏳ Pendiente    |
+| Fase 4 - Terraform (AWS)       | ⏳ Pendiente    |
+| Fase 5 - Kubernetes (EKS)      | ⏳ Pendiente    |
+| Fase 6 - Monitoreo             | ⏳ Pendiente    |
+| Fase 7 - Seguridad & Auditoría | ⏳ Pendiente    |
 
+🤝 Contribuciones
+¡Las contribuciones son bienvenidas!
+Sigue estos pasos para colaborar:
+
+# 1. Haz un fork del repositorio
+# 2. Crea una nueva rama
 git checkout -b feature/nueva-funcionalidad
 
+# 3. Haz tus cambios y confirma
 git commit -m "Agrega nueva funcionalidad"
 
+# 4. Sube tu rama y abre un Pull Request
 git push origin feature/nueva-funcionalidad
-
-Abre un Pull Request
-
-📄 Licencia
-Este proyecto está licenciado bajo la MIT License. Consulta el archivo LICENSE para más detalles.
 
 📬 Contacto
 Desarrollado por: Ruben Alexis
-📧 rubenalexisdevops@gmail.com
+📧 Email: rubenalexisdevops@gmail.com
 
+🧭 Diagrama propuesto: Arquitectura HiveBox (End-to-End)
+
+[ Usuario ] 
+     │
+     ▼
+[ Load Balancer / Ingress ]
+     │
+     ▼
+[ Kubernetes (EKS o local) ]
+     ├── [ App Backend (Node.js / Python) ]
+     ├── [ API externa: openSenseMap ]
+     ├── [ Prometheus ] ──▶ [ Grafana ]
+     │
+     └── [ Sidecar: Fluentd / Logging (opcional) ]
+     
+🛠 CI/CD (GitHub Actions)
+     └──▶ Test & Build
+           └──▶ Docker Images (DockerHub / ECR)
+           └──▶ Deploy a K8s
+
+☁️ Terraform + Ansible
+     ├──▶ Provisión de infraestructura AWS:
+     │       ├── VPC
+     │       ├── EC2
+     │       ├── S3
+     │       ├── IAM
+     │       └── RDS (opcional)
