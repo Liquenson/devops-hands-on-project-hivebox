@@ -1,0 +1,33 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar el repositorio
+        uses: actions/checkout@v3
+
+      - name: Configurar Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login en Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Construir imagen Docker
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/hivebox-app:latest ./app
+
+      - name: Ejecutar tests
+        run: echo "Aquí ejecutarías los tests con pytest, npm test, etc."
+
+      - name: Subir imagen a Docker Hub
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/hivebox-app:latest
