@@ -40,3 +40,7 @@ jobs:
         run: |
           docker tag myapp:latest ${{ secrets.DOCKER_USERNAME }}/myapp:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/myapp:latest
+          
+          - name: Run tests
+          run: npm test
+        
