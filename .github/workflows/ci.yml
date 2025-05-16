@@ -1,29 +1,16 @@
-name: Build and Push Docker Image
-
-on:
-  push:
-    branches:
-      - main  # Puedes ajustar a tu rama principal
-  workflow_dispatch:  # Permite ejecutarlo manualmente desde GitHub
-
-env:
-  AWS_REGION: us-east-1
-  IMAGE_NAME: myapp
-
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read  # Necesario si usás OpenID Connect
+    env:
+      AWS_REGION: us-east-1         # Ajustar según tu región
+      IMAGE_NAME: myapp
+      ECR_REGISTRY: ${{ env.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com
 
     steps:
-      - name: Checkout source code
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set environment variables
-        run: echo "AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)" >> $GITHUB_ENV
-
+      # Configurar credenciales de AWS
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
@@ -31,29 +18,32 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
+      # Login a Amazon ECR
       - name: Login to Amazon ECR
         uses: docker/login-action@v3
         with:
-          registry: ${{ env.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com
+          ecr: ${{ env.ECR_REGISTRY }}
 
+      # Login a Docker Hub
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      # Build Docker image con cache para acelerar
       - name: Build Docker image
         run: |
-          docker build -t $IMAGE_NAME:latest .
+          docker build --cache-from=type=local,src=/tmp/.buildx-cache --tag $IMAGE_NAME:latest .
 
-      - name: Tag and Push to Amazon ECR
+      # Tag y push a Amazon ECR
+      - name: Tag and push to ECR
         run: |
-          ECR_REPO="${{ env.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/$IMAGE_NAME"
-          docker tag $IMAGE_NAME:latest $ECR_REPO:latest
-          docker push $ECR_REPO:latest
+          docker tag $IMAGE_NAME:latest $ECR_REGISTRY/$IMAGE_NAME:latest
+          docker push $ECR_REGISTRY/$IMAGE_NAME:latest
 
-      - name: Tag and Push to Docker Hub
+      # Tag y push a Docker Hub
+      - name: Tag and push to Docker Hub
         run: |
-          HUB_REPO="${{ secrets.DOCKER_USERNAME }}/$IMAGE_NAME"
-          docker tag $IMAGE_NAME:latest $HUB_REPO:latest
-          docker push $HUB_REPO:latest
+          docker tag $IMAGE_NAME:latest ${{ secrets.DOCKER_USERNAME }}/$IMAGE_NAME:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/$IMAGE_NAME:latest
